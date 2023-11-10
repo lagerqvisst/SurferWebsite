@@ -1,0 +1,581 @@
+/*Egenimporterade fonts
+*/ 
+
+@font-face {
+    font-family:'Source Sans 3';
+    src: url(fonts/Source_Sans_3/static/SourceSans3-Bold.ttf);
+}
+
+@font-face {
+    font-family:"Merriweather";
+    src: url(fonts/Merriweather/Merriweather-Regular.ttf);
+}
+
+@font-face {
+    font-family:"Nashira";
+    src: url(fonts/NashirafreeRegular-9Yw55.otf);
+
+    /*Hittade denna online när jag sökte efter "surfer"-fonts
+    Används på H1/H2-taggen i header */
+
+}
+/* FONT IMPORT: SLUT */
+
+
+
+/*START: Övergripande stil  */
+html{
+    font-size: 100%;
+}
+
+body{
+    font-family: Merriweather, Georgia, serif;
+    background: url(../images/yellow_surfboard.jpg) no-repeat;
+    background-size: cover;
+
+    /*Bakgrundsbilden har surfinspiration. Experimenterade med "cover" då 
+      jag personligen har en väldigt bred skärm och cover ser då till att bakgrundsbilden
+      skalas så att den täcker hela bakgrunden utan att förvränga proportionerna */
+    
+}
+
+#container{ 
+    width: 85%; 
+    margin: 0 auto;
+    background-color: rgba(240, 248, 255, 0.75); 
+    /*På större skärmar så ramar jag in innehållet där bakgrundsbildens 
+      ges andrum. Margin 0 auto hjälper till att centrera innehållet i containern.  */
+}
+
+
+img{
+    border-radius: 16px;  
+
+    /*Ger en lite mjukare känsla på samtliga bilder som får rundade hörn. */
+
+}
+/*SLUT: Övergripande stil  */
+
+
+
+/*START: RUBRIK STILSÄTTNING  */
+h1{
+    font-family: Nashira;
+    color:rgba(7, 7, 7, 0.8);
+    font-size: 3rem;
+    letter-spacing: 0.5rem;
+    text-transform: uppercase;
+    text-align: center;
+
+    /*Importerat en "surf"-font som pryder sidans namn.
+      Ger även p-taggen i headern samma font vilket deklareras längre ner i koden */
+
+}
+
+h2, h3{
+    font-family: "Source Sans 3", Helvetica, sans-serif; 
+    letter-spacing: 0.03rem; 
+
+    /*Lite mjukare typsnitt för rubriksättning*/
+    
+}
+
+h2{
+    line-height: 1.1;
+}
+/*SLUT:  RUBRIK STILSÄTTNING*/
+
+
+
+/*START: HEADER - SIDANS TITEL OCH UNDERRUBRIK  */
+header {
+    margin: 2rem 0 4rem;
+    text-align: center;
+
+    /* Olika luftrum mellan toppen och till navigeringen  */
+}
+
+header h1{
+    padding: 3rem; 
+     /*Lite padding för att få in rubriken "djupare" i headern  */
+}
+
+header p {
+    font-family: Nashira;
+    color: rgba(7, 7, 7, 0.7);
+    font-size: 1.5rem;
+    /*Som nämnt ovan får "mottot" samma surf-font  */
+}
+/*SLUT:  HEADER - SIDANS TITEL OCH UNDERRUBRIK*/
+
+
+
+/* START: NAVIGERINGS MENY */
+nav, footer {
+    border: 0.5rem solid rgba(86, 189, 214, 0.2);
+    border-left: none;
+    border-right: none;
+    padding: 0.8rem;
+    margin-bottom: 4rem;
+
+    /*Experimenterar med delvisa borders med transparens
+      som jag tycker fick en fin effekt med två linjer som skär igenom containern.
+      Footern ärver även denna stil men tillämpar midnre förändring (se footer längre ner)  */
+
+}
+
+nav ul {
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-around;
+
+    /*flex och justify content ger en responsiv lösning för att få en bra spridning
+      av navigeringsvalen */
+}
+
+nav a {
+    font-size: 1.3rem;
+    text-decoration: none;
+    color: rgba(7, 7, 7, 0.8);
+
+    /*Vill ha det stilrent så tar bort hyperlänk indikationen med underline.
+      Det är uppenbart för användaren att dessa är navigeringslänkar
+      Använder hover/focus för att göra det explict. */
+}
+
+nav a:hover,nav a:focus {
+    color: rgba(7, 7, 7, 0.2);
+
+    /*Subtilt men effektivt, samma färg, bara högre opacity. */
+}
+/* SLUT: NAVIGERINGS MENY */
+
+/* START: Gemensam stilsättning för sektion samt #products/#story */
+section{
+    margin: 3rem 3rem 3rem 3rem; 
+
+    /* Luft mellan sektionerna och kanten av containern */
+}
+
+section h2{
+    font-size: 3rem;
+
+    /*Vi har totalt tre sektioner där jag i alla fall vill ha H2 samma på alla.
+    H3 taggarna vill jag däremot ha annorlunda. */
+
+}
+
+
+#products p, #story p{
+    line-height: 2;
+    font-size: 1.5rem;
+
+    /*Brötexten i products och story delar samma stil */
+
+}
+
+#products a, #story a , footer a{
+    text-decoration: none;
+    font-style: italic;
+    color: rgb(234, 103, 103);
+
+    /*Jämfört med navigeringslänkarna tillämpas en mer explicit stil
+      För att signalera en länk.
+      Denna stil omfångar det innehåll som har länkar förutom navigeringen */
+
+}
+
+#products a:hover, #products a:focus,
+#story a:hover, #story a:focus,
+footer a:hover, footer a:focus {
+    text-decoration: underline;
+
+    /*Genom muspekaren signaleras tydligare att den rosa texten är en hyperlänk */
+}
+/* SLUT: Gemensam stilsättning för sektion samt #products/#story */
+
+/* START: Specifik stilsättning för #Products  */
+#products article {
+    display: grid;
+    grid-template-columns: 0.2fr 1fr; 
+    grid-gap: 1rem; 
+    border-style: solid;
+    margin-bottom: 10rem;
+
+    /*Samtliga artiklar är struktruerade i ett "grid-format" som ger mig kontrollen över layouten
+      genom ut att positionera ut de olika rubrikerna, artikeltexten och bildenra efter en tänkt design.
+      För stora skärmar finns det rum att tex. ha bilden och texten brevid varandra. 
+      Men man märker snabbt att texten blir ihop tryckt vid lägre upplösning. Jag har tillämpat två brytpunkter
+      för att hantera detta där jag gör om grid-layouten.  */
+}
+
+#products h2 {
+    grid-row: 1;
+}
+
+#products h3 {
+    grid-row: 2;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    font-style: italic;
+
+    /*Vill ha datumen lite mer diskreta, därav kursiv och mindre. */
+}
+
+#products img {
+    grid-row: 3;
+    grid-column: 1;
+    margin-right: 1rem; 
+
+    /*Marginalen ger lite luft mellan bild och text som ligger i samma grid-column */
+
+}
+
+#products  p {
+    grid-row: 3; 
+    grid-column: 2/2; 
+    margin: auto 0; 
+
+    /*Bilden och p-taggen delar samma rad men får varsin kolumn
+      För breakpointen för enheter med lägre upplösning får alla element varsin rad.
+      margin auto 0 fyller funktionen att centrera texten mot bilden. Man märker inte
+      centreringen jättebra på första bilden, men ser snyggare ut på bilderna som följer.  */
+}
+/* SLUT : Specifik stilsättning för #Products  */
+
+
+/*START: TABELL för klasser företaget erbjuder  */
+#classes{
+    background-color: rgba(171, 231, 246, 0.4);
+    border: solid 0.4em rgb(245, 238, 238);
+    padding: 1rem;
+    margin-bottom: 6rem;
+    
+    /*Bakgrundsfärgen och ram ger en design som bryter av övrigt innehåll 
+     men bibehålla lite av färgschemat på den övergripande siten  */
+    
+}
+
+#classes h2{
+    margin-bottom: 1rem;
+
+    /*Ger lite luft mellan rubriken och tabellen. */
+}
+
+table{
+    width: 100%;
+    max-width: 100%;
+
+    /*Detta medför till att sjävla tabellen inuti #classes elementet tar upp hela ytan.
+    Eftersom det är mycket text och som ska fungera på mindre skärmar så blir det här en bra utgångspunkt. */
+}
+
+th, td{
+    border: 1px solid #000000;
+    text-align: center;
+
+    /*Ramen på tabellrubrik och tabelldatan ger ett klassiskt tabellutseende */
+}
+
+th{
+    text-transform: uppercase;
+    color: rgb(3, 3, 3);
+    background-color: #f3f8fc;
+    font-size: 1.5rem;
+    padding: 0.5em 0.6em
+
+    /*Tabellrubrikerna gör sig tydliga med att ha stora bokstäver och de färgläggs vitt */
+    
+}
+td{
+    background-color:rgba(230, 231, 232, 0.5);
+
+    /*Använder ytterligare bakgrundsfärger på själva innehållet i tabellen som gör läsbarheten något bättre. */
+}
+/*SLUT: TABELL  */
+
+
+
+/*START: Artikel "Our Story" */
+#story img{
+    float: left;
+    margin-right: 2rem;
+    margin-top: 1rem;
+
+    /*Float bidrar med att införliva bilden med texten på ett bra sätt.
+    Detta funkar bra på större skärmar men inte på mindre. Likt det jag beskriver på #Products ovan
+    så gör jag om designen genom breakpoints med att dela upp allt innehåll rad för rad och tar bort float. */
+}
+
+#story h2, #story h3{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+
+    /*Jämfört med #Products så kan man ge luft mellan varje text utifrån article-elementet.
+    Här nyttjar jag rubriksättningen för att få lite andrum mellan texterna. */
+
+}
+
+#story h3{
+    font-size: 1.5rem;
+
+    /*Tolkar HTML strukturen i #Story att den sista texten är av lite mindre vikt jämfört med 
+    de andra tre H2-taggarna och därav ville jag reflektera detta genom att dra ner på
+    font-storleken på både rubriken och p-taggen som följer (nedan).  */
+}
+
+#story h3+p{
+    font-size: 1.3rem;
+
+    /*Här targetar jag specifikt den p-tagg som följs av h3 taggen i story med motivationen som beskrivs ovan. */
+}
+/*SLUT:  Artikel "Our Story"*/
+
+
+
+/*START: Formulär - Newsletter  */
+#newsletter{
+    width: 35%;
+    margin: 0  auto;
+    margin-top: 7rem;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background-color: rgba(65, 205, 223, 1);
+    border: solid white 0.3rem;
+
+    /*Genom att begränsa elementets bredd ges formuläret en rimligt stor plats i proportion till elementets yta.
+    I mina breakboints ändrar jag bredden ytterligare för att bredden ska bli konsekvent.
+    margin 0 auto centrerar elementet. 
+    Färgdesignen bryter av det övriga innehållet på siten.   */
+
+}
+
+/*Nedanstående är små justeringar för luft och storlek på de olika elementen som ingår i formuläret   */
+#newsletter h2{
+    font-size: 3rem;
+}
+
+#newsletter p{
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+#newsletter h3{
+    margin-top: 1rem;
+    margin-bottom: 1rem; 
+}
+
+#newsletter label{
+    margin-right: 1em;
+    font-size: 1rem;
+}
+
+#newsletter input[type='submit']{
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+/*SLUT:  Formulär - Newsletter*/
+
+
+
+/* START: FOOTER - SLUT AV SIDAN */
+footer{
+    border-bottom: none;
+
+    /*Footern har ärvt all stil från navigeringen, men tar bort ramen under till då jag
+    tycker det blir mer estetiskt. */
+}
+
+footer p{
+    font-size: 0.9rem;
+    text-align: center;
+    font-style: italic;
+
+    /*Denna del av siten får av sin natur mer diskret plats, 
+    därav font-storleken och kursiv. */
+
+}
+
+/* SLUT: FOOTER - SLUT AV SIDAN */
+
+/*Nedanstående breakpoints bidrar till mindre justeringar som förbättrar läsbarheten på något mindre skärmupplösningar.
+Speciellt första sectionen #Products där brödtexten i p-taggarna snabbt blir ihoptryckta. Här designar jag om grid-layouten
+så att varje element får sin egna rad. I övrigt justerar jag smått font-storlekar och luft mellan olika element också. */
+@media(max-width: 1050px)  {
+
+    #container{
+        width: 90%;
+        margin: 0 auto;
+
+        /*Fyller ut containern lite så att exempelvis #Story får lite mer luft för sin text. Specifikt är syftet
+        i början av elementet där vi har en flytande bild och text som flyter upp brevid. När skärmen blir mindre
+        får inte texten andrum, så detta är ett litet stöd innan vi ändrar formatet för mobilskärmar. */
+
+    }
+    img{
+        width: 320px;
+        max-width: 100%;
+
+        /*Minimerar storleken något i proportion till att font-sizes minmeras */
+        
+    }
+
+    header{
+        margin-bottom: 2rem;
+
+        /*Minimerar luften mellan header och navigationen något. */
+
+    }
+
+    header h1 {
+        font-size: 2.2rem;
+        
+    }
+
+    section h2{
+        font-size: 2rem;
+
+    }
+    #products h3{
+        font-size: 0.9em;
+
+    }
+
+    #products p, #story p{
+        font-size: 1.2rem;
+
+    }
+
+    #story h3+p{
+        font-size: 1rem;
+    }  
+
+    #products article{
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-bottom: 4rem;
+
+        /*Varje element i varje artikel får här varsin rad i syfte att främst få artikelns text
+        att andas.   */
+    }
+
+    #products article h2{
+        grid-row: 1;
+    }
+
+    #products article h3{
+        grid-row: 2;
+    }
+
+    #products article img{
+        grid-row: 3;
+    }
+
+    #products article p{
+        grid-row: 4;
+        grid-column: 1;
+
+        /*Artikelns text ärver fortfarande positionen från förra grid-layouten på kolumn 2.
+        Forcerar elementet till vänster sida. Skriver jag inte in grid-column 1 så placerar sig detta element till höger vilket jag inte vill.  */
+    }   
+
+    #newsletter{
+        width: 45%;
+
+        /*Anpassar begränsningen av bredden från default CSS så att den fortsätter ta upp proportioneligt mycket utrymme */
+    }
+}
+
+/*Mobilanpassad breakpoint: Vi nyttjar hela bredden av cointainern.
+Eftersom att sectionen #story inte är indelad på samma sätt som #Products nyttjar vi
+flex-direction column för att uppnår liknande effekt där varje element får vara på varsin rad. 
+
+Kommenterar inte alla ändringar som avser mindre font-size justeringar som blir mindre i proportion till att 
+det innehållet generellt minimeras */
+@media(max-width: 800px){
+
+    #container{
+        width: 100%;
+        margin: 0 auto;
+
+        /*För läsbarheten nyttjar vi här hela bredden av sidan som tidigare haft en del luft.
+        Detta ger mer utrymme för text och innehåll generellt. */
+    }
+
+    img{
+        width: 250px;
+        max-width: 100%;
+        
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+        line-height: 3rem;
+        padding: 1rem;
+    }
+
+    header p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    nav ul{
+        flex-direction: column;
+        align-items: center;
+        
+        /*Vi renoverar hela navigeringsmenyn som tidigare haft horisontell layout.
+        Utnyttjar flexdirection att få navieringsalternativen på rad och sedan centrerar i mitten */
+    }
+
+    nav ul li a{
+        font-size: 1.1rem;
+    }
+
+    #products p, #story p{
+        font-size: 1rem;
+    }
+
+    th{
+        font-size: 1rem; 
+    }
+    td{
+        font-size: 0.8rem;
+    }
+
+    #story{
+        display: flex;
+        flex-direction: column;
+
+        /*Tar bort float-layouten då det inte blir bra på mindre skärmar och följer samma design som products sektionen.
+        Eftersom #Story inte är indelad på samma sätt som #Products med article blir det svårare att använda GRID men
+        det löser sig enkelt med column och vi får på samma sätt varje element på en och samma rad. */
+    }
+    #story img, #story h2:first-of-type{
+        margin: 0 auto;
+
+        /*För mobiler tyckte jag det blev snyggt att centrera 
+        dessa två element. first-of-type gör att endast den första
+        h2 taggen i #Story blir centrerad. Utan den skulle alla h2-taggar
+        i #story få detta utseende vilket jag inte vill. */
+
+    }
+
+    #story img{
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        width: 300px;
+     }
+
+    #story h3{
+        font-size: 1.3rem;
+    }
+    
+    #story h3+p{
+        font-size: 0.9rem;
+    }
+    
+    #newsletter{
+        width: 50%;
+    }
+
+}
